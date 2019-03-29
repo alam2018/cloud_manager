@@ -44,6 +44,8 @@ void reg_reply_send(CLOUD_MANAGER_REGISTRATION_T mng_reg, INT32 sockFd);
 void brodcast_res_usg_report (int db_index);
 void get_result();
 double allocate_cpu ();
+int alloc_down_bw ();
+int alloc_up_bw ();
 
 
 /*!----------------------------------------------------------------------------
@@ -271,6 +273,8 @@ static VOID MsgHandler(UINT32 messageId, INT32 sockFd)
 				} else if (total_Numberof_Mudule == 1)
 				{
 					mng_cpu_alloc.resource_rsp = allocate_cpu();
+					mng_cpu_alloc.down_BW_rsp = alloc_down_bw ();
+					mng_cpu_alloc.up_BW_rsp = alloc_up_bw ();
 					mng_cpu_alloc.res_querry_enable = 3;
 					MsgInsertFunc (CLOUD_MANAGER_RESOURCE_HANDLE, sizeof (CLOUD_MANAGER_RESOURCE_HANDLE_T), &mng_cpu_alloc, &temppdcpSendBuffer);
 					MsgSend (sockFd);
@@ -384,4 +388,44 @@ double allocate_cpu ()
 	   double allocated_cpu = (double)((CPU_CAPACITY * i) / 100);
 
 	   return allocated_cpu;
+}
+
+int alloc_down_bw ()
+{
+	   int i;
+	   bool false_in = true;
+
+	   while (false_in)
+	   {
+		   printf( "Enter the downlink BW in MB:");
+		   scanf("%d", &i);
+		   printf( "\nYou entered: %d \n", i);
+		   if (i > 0)
+		   {
+			   false_in = false;
+		   }
+
+	   }
+
+	   return i*1000000;
+}
+
+int alloc_up_bw ()
+{
+	   int i;
+	   bool false_in = true;
+
+	   while (false_in)
+	   {
+		   printf( "Enter the uplink BW in MB:");
+		   scanf("%d", &i);
+		   printf( "\nYou entered: %d \n", i);
+		   if (i > 0)
+		   {
+			   false_in = false;
+		   }
+
+	   }
+
+	   return i*1000000;
 }
