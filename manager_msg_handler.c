@@ -44,8 +44,8 @@ void reg_reply_send(CLOUD_MANAGER_REGISTRATION_T mng_reg, INT32 sockFd);
 void brodcast_res_usg_report (int db_index);
 void get_result();
 double allocate_cpu ();
-int alloc_down_bw ();
-int alloc_up_bw ();
+double alloc_down_bw ();
+double alloc_up_bw ();
 
 
 /*!----------------------------------------------------------------------------
@@ -385,21 +385,21 @@ double allocate_cpu ()
 
 	   }
 
-	   double allocated_cpu = (double)((CPU_CAPACITY * i) / 100);
+	   double allocated_cpu = (double)((CPU_CAPACITY * i) / 100.0);
 
 	   return allocated_cpu;
 }
 
-int alloc_down_bw ()
+double alloc_down_bw ()
 {
-	   int i;
+	   double i;
 	   bool false_in = true;
 
 	   while (false_in)
 	   {
 		   printf( "Enter the downlink BW in MB:");
-		   scanf("%d", &i);
-		   printf( "\nYou entered: %d \n", i);
+		   scanf("%lf", &i);
+		   printf( "\nYou entered: %f \n", i);
 		   if (i > 0)
 		   {
 			   false_in = false;
@@ -410,16 +410,16 @@ int alloc_down_bw ()
 	   return i*1000000;
 }
 
-int alloc_up_bw ()
+double alloc_up_bw ()
 {
-	   int i;
+	   double i;
 	   bool false_in = true;
 
 	   while (false_in)
 	   {
 		   printf( "Enter the uplink BW in MB:");
-		   scanf("%d", &i);
-		   printf( "\nYou entered: %d \n", i);
+		   scanf("%lf", &i);
+		   printf( "\nYou entered: %f \n", i);
 		   if (i > 0)
 		   {
 			   false_in = false;

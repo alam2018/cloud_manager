@@ -34,7 +34,7 @@
 
 #define MAX_NO_SOCKET_CONN 				250
 #define BUFFER_SIZE 					10000
-#define CPU_CAPACITY					9485.8662
+#define CPU_CAPACITY					11383.0
 
 
 VOID MsgReceive(INT32 connectedSockFd);
@@ -150,10 +150,10 @@ typedef struct
 	int 		module_id;     							/*!< \brief  Virtualized module identifier      */
 	int  		resource_req;      						/*!< \brief  Amount of CPU resource request from an module */
 	int			resource_rsp;							/*!< \brief  Amount of allocated CPU resource from the cloud manager */
-	int			down_BW_req;							/*!< \brief  Downlink Bandwidth request */
-	int			down_BW_rsp;							/*!< \brief  Downlink Bandwidth allocation from CM */
-	int			up_BW_req;								/*!< \brief  Uplink Bandwidth request */
-	int			up_BW_rsp;								/*!< \brief  Uplink Bandwidth allocation from CM */
+	double		down_BW_req;							/*!< \brief  Downlink Bandwidth request */
+	double		down_BW_rsp;							/*!< \brief  Downlink Bandwidth allocation from CM */
+	double		up_BW_req;								/*!< \brief  Uplink Bandwidth request */
+	double		up_BW_rsp;								/*!< \brief  Uplink Bandwidth allocation from CM */
 	int			res_querry_enable;						/*!< \brief  Cloud manager asks to module about current resource usage report. Set 1, when module is asking
 														for cpu, 2 when manager is asking modules about there current usage, 3 when modules are replying about managers query  */
 } __attribute__((packed)) CLOUD_MANAGER_RESOURCE_HANDLE_T;
