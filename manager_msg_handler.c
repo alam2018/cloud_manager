@@ -272,7 +272,7 @@ static VOID MsgHandler(UINT32 messageId, INT32 sockFd)
 							"Uanble to allocate CPU", total_Numberof_Mudule);
 				} else if (total_Numberof_Mudule == 1)
 				{
-					mng_cpu_alloc.resource_rsp = allocate_cpu();
+					mng_cpu_alloc.resource_rsp = (int) allocate_cpu();
 					mng_cpu_alloc.down_BW_rsp = alloc_down_bw ();
 					mng_cpu_alloc.up_BW_rsp = alloc_up_bw ();
 					mng_cpu_alloc.res_querry_enable = 3;
